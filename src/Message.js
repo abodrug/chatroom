@@ -3,9 +3,14 @@ import React, { useEffect } from "react";
 import Markdown from "react-markdown";
 import breaks from "remark-breaks";
 import { formatDistance } from "date-fns";
+import ru from 'date-fns/locale/ru';
 import classnames from "classnames";
 import type { ChatMessage } from "./Chatroom";
 import { noop } from "./utils";
+
+const locale = {
+    locale: ru
+};
 
 type MessageTimeProps = {
   time: number,
@@ -21,7 +26,7 @@ export const MessageTime = ({ time, isBot }: MessageTimeProps) => {
       className={classnames("time", isBot ? "left" : "right")}
       title={messageTimeObj.toISOString()}
     >
-      {formatDistance(messageTimeObj, Date.now())}
+      {formatDistance(messageTimeObj, Date.now(), locale)}
     </li>
   );
 };

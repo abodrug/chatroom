@@ -198,7 +198,7 @@ export default class Chatroom extends Component<ChatroomProps, ChatroomState> {
     const { messages, isOpen, waitingForBotResponse, voiceLang } = this.props;
     const messageGroups = this.groupMessages(messages);
     const isClickable = i =>
-      !waitingForBotResponse && i == messageGroups.length - 1;
+      !waitingForBotResponse && i === messageGroups.length - 1;
 
     return (
       <div className={classnames("chatroom", isOpen ? "open" : "closed")}>
@@ -225,7 +225,7 @@ export default class Chatroom extends Component<ChatroomProps, ChatroomState> {
             }
             ref={this.inputRef}
           />
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Отправить" />
           {this.props.speechRecognition != null ? (
             <SpeechInput
               language={this.props.speechRecognition}
